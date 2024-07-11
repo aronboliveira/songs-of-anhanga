@@ -1,0 +1,79 @@
+{
+  "chars": {
+    "voidMonster": {
+      "prefix": "dall-e-",
+      "mainPart": "void-monster",
+      "extension": "jpeg"
+    },
+    "anhanga": {
+      "prefix": "dall-e-",
+      "mainPart": "anhanga-2",
+      "extension": "jpeg"
+    },
+    "baphomet": {
+      "prefix": "dall-e-",
+      "mainPart": "baphomet",
+      "extension": "jpeg"
+    },
+    "beheadedMule": {
+      "prefix": "dall-e-",
+      "mainPart": "behead-mule-2",
+      "extension": "jpeg"
+    },
+    "spectralHorse": {
+      "prefix": "dall-e-",
+      "mainPart": "spectral-horse",
+      "extension": "jpeg"
+    },
+    "pasana": {
+      "prefix": "dall-e-",
+      "mainPart": "pasana",
+      "extension": "jpeg"
+    },
+    "boitata": {
+      "prefix": "dall-e-",
+      "mainPart": "boitata-4",
+      "extension": "jpeg"
+    },
+    "boiuna": {
+      "prefix": "dall-e-",
+      "mainPart": "boiuna-2",
+      "extension": "jpeg"
+    },
+    "fireElemental": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-fire-elemental",
+      "extension": "jpeg"
+    },
+    "werewolf": {
+      "prefix": "dall-e-",
+      "mainPart": "br-werewolf-2",
+      "extension": "jpeg"
+    },
+    "twistedAngel": {
+      "prefix": "dall-e-",
+      "mainPart": "twisted-angel",
+      "extension": "jpeg"
+    },
+    "elvishDragon": {
+      "prefix": "dall-e-",
+      "mainPart": "dragon-nelvish",
+      "extension": "jpeg"
+    },
+    "mindFlayer": {
+      "prefix": "dall-e-",
+      "mainPart": "mind-flayer",
+      "extension": "jpeg"
+    },
+    "tamarinSarue": {
+      "prefix": "dall-e-",
+      "mainPart": "tamarin-sarue-monster",
+      "extension": "jpeg"
+    },
+    "tribalFeral": {
+      "prefix": "dall-e-",
+      "mainPart": "tribal-feral-humanoid",
+      "extension": "jpeg"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "chars": {
+    "berserker": {
+      "prefix": "dall-e-",
+      "mainPart": "gnome-warrior-2",
+      "extension": "jpeg"
+    },
+    "warlock": {
+      "prefix": "dall-e-",
+      "mainPart": "demon-warlock",
+      "extension": "jpeg"
+    },
+    "warrior": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-elf-warrior",
+      "extension": "jpeg"
+    },
+    "elementalist": {
+      "prefix": "dall-e-",
+      "mainPart": "drow-elementalist",
+      "extension": "jpeg"
+    },
+    "shotter": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-wer-shotter",
+      "extension": "jpeg"
+    },
+    "lich": { "prefix": "dall-e-", "mainPart": "lich-2", "extension": "jpeg" },
+    "priest": {
+      "prefix": "dall-e-",
+      "mainPart": "jaci-priestess",
+      "extension": "jpeg"
+    },
+    "shadowMancer": {
+      "prefix": "dall-e-",
+      "mainPart": "shadow-priest",
+      "extension": "jpeg"
+    },
+    "archer": {
+      "prefix": "dall-e-",
+      "mainPart": "nelfinspired-amazonic-archer",
+      "extension": "jpeg"
+    },
+    "tinker": {
+      "prefix": "dall-e-",
+      "mainPart": "tinker-gnome",
+      "extension": "jpeg"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+$figBorderRad: 1rem;
+$figBorder: ridge 0.5rem var(--primary-base-color);
+
+:root {
+  --primary-base-color: #d2cecea0;
+  --primary-dark-color: #b6b0b0a0;
+  --secondary-dark-color: #292828ea;
+}
+
+.classPanelMainDiv {
+  background-color: #ffff;
+  header {
+    background-color: var(--primary-dark-color);
+    margin: 0 0 2rem 0;
+    scrollbar-gutter: auto;
+    h1 {
+      font-weight: 900;
+    }
+  }
+  ol {
+    list-style: disc;
+    li {
+      a {
+        color: var(--secondary-dark-color);
+      }
+    }
+  }
+  article {
+    &.classArtc {
+      min-height: 100vh;
+      .classHdr {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem 1.5rem 1rem 1rem;
+        border-bottom: var(--primary-dark-color) 0.2rem ridge;
+        .classReturn {
+          margin-bottom: 0.5rem;
+        }
+      }
+      .classBody {
+        padding: 1.5rem;
+        img {
+          object-fit: cover;
+          object-position: center;
+          max-width: 33vw;
+          max-height: 33vw;
+          min-width: 23rem;
+          min-height: 13rem;
+          border-radius: $figBorderRad;
+          border: $figBorder;
+          filter: drop-shadow(0.5rem 0.5rem 0.5rem var(--primary-base-color));
+          &#imgPriest-1 {
+            object-position: 0 -8rem;
+          }
+          &#imgGeomancer-2 {
+            transform: rotateY(180deg) translate(-8px, 0);
+          }
+        }
+        .classPanelFigure {
+          height: 11.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin: 0 0 11% 0;
+          border: $figBorder;
+          border-radius: $figBorderRad;
+          filter: drop-shadow(0.5rem 0.5rem 0.5rem var(--primary-base-color));
+          background-color: var(--primary-dark-color);
+          &:first-of-type {
+            margin-top: 7%;
+          }
+          &:nth-of-type(2n) {
+            flex-flow: row-reverse;
+            img {
+              transform: translate(4px, 0);
+            }
+          }
+          &:nth-of-type(2n + 1) {
+            flex-flow: row;
+            img {
+              transform: translate(-4px, 0);
+            }
+          }
+          figcaption {
+            align-self: start;
+            justify-self: center;
+            min-width: 51%;
+            padding: 2.5% 1rem 1rem 1rem;
+            p {
+              overflow: auto;
+              margin: 0;
+            }
+            ol,
+            ul {
+              margin: 0;
+            }
+          }
+          .subClassList {
+            padding-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  &.classReturn {
+    font-weight: 700;
+  }
+}

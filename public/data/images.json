@@ -1,0 +1,327 @@
+{
+    "campaigns": [
+        {
+            "name": "dall-e-dragon-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-3",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-4",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-5",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-6",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-7",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon",
+            "extension": ".jpeg"
+        }
+    ],
+    "chars": [],
+    "classes": [],
+    "creatures": [
+        {
+            "name": "dall-e-anhanga-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-anhanga",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boitata-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boitata-3",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boitata-4",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boitata",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boiuna-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-boiuna",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-br-werelwolf-3",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-br-werewolf-1",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-br-werewolf-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-human-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-dragon-nelvish",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-fire-mule",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-generic-atlforest-gnome",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-generic-fire-elemental",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-generic-old-demon",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-nebula-horror",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-pasana",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-skeleton-tailed-warrior",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-spectral-horse",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-tamarin-sarue-monster",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-tribal-feral-humanoid",
+            "extension": ".jpeg"
+        }
+    ],
+    "prompts": [
+        {
+            "name": "dwarf-male-war-1",
+            "extension": ".txt"
+        },
+        {
+            "name": "dwarf-male-war-2",
+            "extension": ".txt"
+        },
+        {
+            "name": "gnome-female-war-1",
+            "extension": ".txt"
+        },
+        {
+            "name": "gnome-female-war-3",
+            "extension": ".txt"
+        }
+    ],
+    "boto": [
+        {
+            "name": "dall-e-boto",
+            "extension": ".jpeg"
+        }
+    ],
+    "cuca": [
+        {
+            "name": "dall-e-cuca-human-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-human",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-pre-transform-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-pre-transform",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-spell-2",
+            "extension": ".jpeg"
+        }
+    ],
+    "iara": [
+        {
+            "name": "dall-e-iara-1",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-iara-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-iara-3",
+            "extension": ".jpeg"
+        }
+    ],
+    "jaci": [
+        {
+            "name": "dall-e-jaci-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci-3",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci-4",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci",
+            "extension": ".jpeg"
+        }
+    ],
+    "necromancer": [
+        {
+            "name": "dall-e-lich-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-lich",
+            "extension": ".jpeg"
+        }
+    ],
+    "priest": [
+        {
+            "name": "dall-e-exu-3",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci-priestess",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-jaci",
+            "extension": ".jpeg"
+        }
+    ],
+    "rogue": [],
+    "shotter": [
+        {
+            "name": "dall-e-generic-wer-shotter-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-generic-wer-shotter",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-nelfinspired-amazonic-archer",
+            "extension": ".jpeg"
+        }
+    ],
+    "sorcerer": [
+        {
+            "name": "dall-e-cuca-pre-transform-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-pre-transform",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-cuca-spell-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-demon-warlock",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-generic-elf-sorcerer",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-halfling-vampire",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-mind-flayer",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-shadow-priest",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-vampire-woman",
+            "extension": ".jpeg"
+        }
+    ],
+    "tinker": [
+        {
+            "name": "dall-e-tinker-gnome",
+            "extension": ".jpeg"
+        }
+    ],
+    "warrior": [
+        {
+            "name": "dall-e-generic-elf-warrior",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-gnome-warrior-2",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dall-e-gnome-warrior",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "dwarf-male-war-1",
+            "extension": ".jpeg"
+        },
+        {
+            "name": "gnome-femalew-warr-1",
+            "extension": ".jpg"
+        },
+        {
+            "name": "gnome-femalew-warr-2",
+            "extension": ".jpg"
+        },
+        {
+            "name": "gnome-femalew-warr-3",
+            "extension": ".jpg"
+        },
+        {
+            "name": "male-dwarf-war-2",
+            "extension": ".jpeg"
+        }
+    ]
+}

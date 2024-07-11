@@ -1,0 +1,144 @@
+{
+  "fighter": {
+    "swordsman": {
+      "barbarian": {
+        "annihilator": {
+          "affinity": "shadows"
+        },
+        "berserker": {
+          "flamelord": {
+            "affinity": "fire"
+          },
+          "thunderlord": {
+            "affinity": "wind"
+          }
+        },
+        "savage-protector": {
+          "affinity": "nature"
+        }
+      },
+      "knight": {
+        "death-knight": {
+          "affinity": "necromancy"
+        },
+        "grove-knight": {
+          "affinity": "nature"
+        },
+        "paladin": {
+          "affinity": "light"
+        },
+        "shadow-knight": {
+          "affinity": "shadows"
+        },
+        "storm-knight": {
+          "affinity": "wind"
+        }
+      }
+    },
+    "rogue": {
+      "assassin": {
+        "holy agent": {
+          "affinity": "light"
+        },
+        "lightning striker": {
+          "affinity": "wind"
+        },
+        "ninja": {
+          "affinity": "shadows"
+        }
+      },
+      "trickster": {
+        "chaos-gangster": {
+          "affinity": "fire"
+        },
+        "demon-jester": {
+          "affinity": "shadows"
+        }
+      }
+    },
+    "bruiser": {
+      "brawler": {
+        "karate-fighter": {},
+        "judo-fighter": {}
+      },
+      "juggernaut": {
+        "jiu-jitsu-fighter": {},
+        "pugilist": {}
+      },
+      "champion": {
+        "capoeira-fighter": {},
+        "kung-fu-fighter": {},
+        "taekwondo-fighter": {}
+      }
+    }
+  },
+  "marksman": {
+    "gunslinger": {},
+    "archer": {}
+  },
+  "sorcerer": {
+    "priest": {
+      "cleric": {
+        "physician": {},
+        "preacher": {}
+      },
+      "shaman": {
+        "elementalist": {},
+        "spiritualist": {
+          "monk": {},
+          "primalist": {}
+        }
+      }
+    },
+    "warlock": {
+      "cabalist": {},
+      "demonologist": {},
+      "necromancer": {
+        "lich": {},
+        "vampire": {}
+      }
+    },
+    "wizard": {
+      "cronomancer": {},
+      "geomancer": {},
+      "hydromancer": {
+        "cryomancer": {},
+        "waterbender": {}
+      },
+      "lightcrafter": {
+        "pyromancer": {},
+        "stormbringer": {}
+      }
+    }
+  },
+  "artist": {
+    "bard": {
+      "dancer": {},
+      "musicist": {},
+      "poet": {}
+    },
+    "illustrator": {
+      "painter": {},
+      "inker": {}
+    }
+  },
+  "druid": {
+    "aquatic": {
+      "crocodilian": {},
+      "crustacean": {},
+      "psicean": {}
+    },
+    "flyer": {
+      "accipitridean": {},
+      "psitacidean": {}
+    },
+    "terrestrial": {
+      "armadillean": {},
+      "caninean": {},
+      "felinean": {},
+      "primatean": {},
+      "tapiriean": {}
+    }
+  },
+  "tinker": {}
+}

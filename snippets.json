@@ -1,0 +1,127 @@
+{
+  "Stringify template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "jsonst",
+    "body": ["`${JSON.stringify($1)}`"],
+    "description": "Template for JSON.stringify()"
+  },
+  "IIFE template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "iifet",
+    "body": ["((${1}) => {})();"],
+    "description": "IIFE template"
+  },
+  "IIFE export exp template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "iifeet",
+    "body": ["export const ${1} = (() => {})();"],
+    "description": "IIFE expression template for exporting"
+  },
+  "Log template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "logt",
+    "body": ["console.log($1);"],
+    "description": "Log output to console"
+  },
+  "Error template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "errt",
+    "body": ["console.error($1);"],
+    "description": "Error output to console"
+  },
+  "Warn template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "warnt",
+    "body": ["console.warn($1);"],
+    "description": "Warn output to console"
+  },
+  "Elif template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "elift",
+    "body": ["if($1){}else if(){}else{}"],
+    "description": "Template for else-if statement"
+  },
+  "Switch template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "st",
+    "body": ["switch($1) {case: default: }"],
+    "description": "Template for switch statement"
+  },
+  "Export Function template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "efunt",
+    "body": ["export function $1(){}"]
+  },
+  "Test template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "desct",
+    "body": ["describe(`$1`, () => {it(``, () => {});});"],
+    "description": "Template for Jest Test"
+  },
+  "Expect ToBe template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etb",
+    "body": ["expect($1).toBe()"],
+    "description": "Template for Expect To Be"
+  },
+  "Expect ToBeNumber template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etbn",
+    "body": ["expect(typeof $1).toBe('number')"],
+    "description": "Template for Expect To Be Number"
+  },
+  "Expect ToBeString template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etbs",
+    "body": ["expect(typeof $1).toBe('string')"],
+    "description": "Template for Expect To Be String"
+  },
+  "Expect ToBeBoolean template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etbb",
+    "body": ["expect(typeof $1).toBe('boolean')"],
+    "description": "Template for Expect To Be Boolean"
+  },
+  "Expect ToBeUndefined template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etbu",
+    "body": ["expect($1).toBeUndefined()"],
+    "description": "Template for Expect To Be Undefined"
+  },
+  "Expect ToBeInstanceOf template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etbi",
+    "body": ["expect($1).toBeInstanceOf()"],
+    "description": "Template for Expect To Be Instance"
+  },
+  "Expect ToBeArray template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "etba",
+    "body": ["expect(Array.isArray($1)).toBe(true)"],
+    "description": "Template for Expect To Be Array"
+  },
+  "Expect to be called with": {
+    "prefix": "etbcw",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["expect($1).toHaveBeenCalledWith()"],
+    "description": "Template for toHaveBeenCalledWith()"
+  },
+  "Try catch template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "tryc",
+    "body": "try{$1}catch(e){console.error(`Error:${(e as Error).message}`)}",
+    "description": "Template for try/catch blocks"
+  },
+  "Use effect template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "useef",
+    "body": "useEffect(() => {$1}, [])",
+    "description": "Template for useEffect"
+  },
+  "Use Ref template": {
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "uref",
+    "body": "useRef<$1>(null)",
+    "description": "Template for useRef"
+  }
+}

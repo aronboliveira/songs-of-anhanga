@@ -1,0 +1,49 @@
+{
+  "chars": {
+    "mermaid": {
+      "prefix": "dall-e-",
+      "mainPart": "amazonic-mermaid",
+      "extension": "jpeg"
+    },
+    "catgirl": {
+      "prefix": "dall-e-",
+      "mainPart": "catgirl",
+      "extension": "jpeg"
+    },
+    "halfling": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-atlforest-gnome",
+      "extension": "jpeg"
+    },
+    "werewolf": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-wer-shotter-2",
+      "extension": "jpeg"
+    },
+    "orc": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-orc-warrior",
+      "extension": "jpeg"
+    },
+    "devil": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-old-demon",
+      "extension": "jpeg"
+    },
+    "vampire": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-vampire",
+      "extension": "jpeg"
+    },
+    "gnome": {
+      "prefix": "dall-e-",
+      "mainPart": "halfling-vampire",
+      "extension": "jpeg"
+    },
+    "elf": {
+      "prefix": "dall-e-",
+      "mainPart": "generic-elf-sorcerer",
+      "extension": "jpeg"
+    }
+  }
+}
