@@ -1,6 +1,6 @@
 THIS IS A PROJECT UNDER CONSTRUCTION
 
-Please check /URL/ for viewing the webpage progress, keeping in mind most features and layouts will be broken because they are under development.
+Please check https://songs-of-anhanga.netlify.app for viewing the webpage progress, keeping in mind most features and layouts will be broken because they are under development.
 
 ---- SOCIAL AND ARTISTIC GOALS
 
