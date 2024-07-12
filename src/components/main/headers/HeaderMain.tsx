@@ -25,7 +25,6 @@ import {
 import clearRootDef, { addCheckButtonsDef } from "src/lib/handlers/handlersDef";
 import { AppThunk } from "src/lib/declarations/typesRedux";
 import { useRouter } from "next/router";
-import { createRoot } from "react-dom/client";
 
 export default function HeaderMain({
   idf,
@@ -47,23 +46,6 @@ export default function HeaderMain({
   const [loaded, setLoaded] = useState<boolean>(false);
   const renderHeader = (hRoot: Root): void | JSX.Element => {
     const renderAttempt = (hRoot: Root) => {
-      if (
-        (hRoot && "_internalRoot" in hRoot && !hRoot._internalRoot) ||
-        document.querySelector("header")?.querySelector("button")
-      )
-        hRoot.unmount();
-      if (
-        !hRoot ||
-        !(hRoot && "_internalRoot" in hRoot) ||
-        !(hRoot && hRoot._internalRoot)
-      )
-        document.querySelectorAll("header")?.forEach(header => header.remove());
-      const replaceHeader = Object.assign(document.createElement("header"), {
-        id: "LoginHeader",
-      });
-      if (document.querySelectorAll("header").length === 0)
-        document.getElementById("mainBody")?.prepend(replaceHeader);
-      hRoot = createRoot(replaceHeader);
       innerWidth > 630
         ? hRoot.render(
             <HeaderSpread
@@ -92,8 +74,6 @@ export default function HeaderMain({
       if (!window) throw new Error(`No active window object found.`);
       if (!(hRoot && "_internalRoot" in hRoot))
         throw typeError(hRoot, `validation of hRoot in renderHeader`, ["Root"]);
-      if ("_internalRoot" in hRoot && !hRoot._internalRoot)
-        hRoot = createRoot(document.querySelector("header")!);
       renderAttempt(hRoot);
       hRoot.render(
         <Spinner
@@ -118,8 +98,6 @@ export default function HeaderMain({
       }, 10000);
     } catch (e) {
       console.error(`Error executing renderHeader:\n${(e as Error).message}`);
-      if ("_internalRoot" in hRoot && !hRoot._internalRoot)
-        hRoot = createRoot(document.querySelector("header")!);
       return hRoot ? (
         hRoot.render(
           <HeaderSpread
