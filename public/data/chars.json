@@ -11,11 +11,19 @@
       "mainPart": "boto",
       "extension": "jpeg"
     },
-    "exu": { "prefix": "dall-e-", "mainPart": "exu", "extension": "jpeg" },
+    "chaos-entity": {
+      "prefix": "dall-e-",
+      "mainPart": "chaos-entity",
+      "extension": "jpeg"
+    },
     "iara": { "prefix": "dall-e-", "mainPart": "iara-1", "extension": "jpeg" },
     "jaci": { "prefix": "dall-e-", "mainPart": "jaci-2", "extension": "jpeg" },
     "saci": { "prefix": "dall-e-", "mainPart": "saci-2", "extension": "jpeg" },
-    "oxalá": { "prefix": "dall-e-", "mainPart": "oxala", "extension": "jpeg" },
+    "elder-god": {
+      "prefix": "dall-e-",
+      "mainPart": "elder-god",
+      "extension": "jpeg"
+    },
     "fireElemental": {
       "prefix": "dall-e-",
       "mainPart": "generic-fire-elemental",

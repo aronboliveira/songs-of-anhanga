@@ -8,10 +8,12 @@ import { setMainComponent } from "src/redux/slices/mainComponentsSlice";
 import GenericErrorComponent from "src/components/errors/ErrorComponentGeneric";
 import LoginMainBody from "src/components/main/bodies/LoginMainBody";
 import { voidishAppContext } from "src/lib/declarations/types";
+import ModalDevelopment from "src/components/modals/alerts/ModalDevelopment";
 
 export const AppContext = createContext<voidishAppContext>(undefined);
 export default function Home(): JSX.Element {
   const [_, setDispatch] = useState<boolean>(false);
+  const [shouldShowDev, setDev] = useState<boolean>(true);
   const router = useRouter();
   const dispatch = useDispatch<Dispatch>();
   useEffect(() => {
@@ -39,6 +41,9 @@ export default function Home(): JSX.Element {
           )}
         >
           <LoginMainBody root={<Home />} />
+          {shouldShowDev && (
+            <ModalDevelopment dispatch={setDev} state={shouldShowDev} />
+          )}
         </ErrorBoundary>
       </div>
       <div id="modalRoot" style={{ width: "0", height: "0" }}></div>
