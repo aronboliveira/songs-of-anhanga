@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "moduleResolution": "node",
+    "baseUrl": "./assets/ts/",
+    "allowJs": true,
+    "module": "esnext",
+    "outDir": "./assets/js/dist/",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "noEmit": false,
+    "isolatedModules": true
+  },
+  "include": ["./assets/ts/", "../global/modules.d.ts"],
+  "exclude": [
+    "**/types.ts",
+    "**/types.tsx",
+    "**/test.tsx",
+    "**/test.ts",
+    "srcBack/",
+    "**/srcBack",
+    "__tests__",
+    "**/__tests__"
+  ]
+}

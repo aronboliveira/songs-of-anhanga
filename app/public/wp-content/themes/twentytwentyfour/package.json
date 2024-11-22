@@ -1,0 +1,50 @@
+{
+  "name": "anhanga",
+  "version": "1.0.0",
+  "private": true,
+  "main": "parts/post-meta.html",
+  "dependencies": {
+    "@wordpress/block-editor": "^14.7.0",
+    "@wordpress/blocks": "^14.1.0",
+    "@wordpress/icons": "^9.7.0",
+    "classnames": "^2.3.2",
+    "colord": "^2.9.3",
+    "dompurify": "^2.3.4",
+    "gradient-parser": "^0.1.5",
+    "prop-types": "^15.8.1",
+    "react": "^18.0.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.0.0",
+    "react-error-boundary": "^4.1.2",
+    "react-select": "^3.2.0",
+    "react-sortablejs": "^6.1.4",
+    "reactcss": "^1.2.3",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@wordpress/scripts": "^23.3.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.2.1",
+    "concurrently": "^9.1.0",
+    "eslint": "^8.57.1",
+    "sass": "^1.81.0",
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start assets/js/components/footers/footerDefault/FooterDefault.js assets/js/components/headers/headerLanding/HeaderLanding.js",
+    "ext": "node -e \"require('./addExtensions.cjs').addExtensions()\"",
+    "tsw": "tsc -w",
+    "sassb": "sass --style=compressed --embed-source-map ./assets/css/sass:./assets/css/dist",
+    "sassw": "sass --no-source-map -w ./assets/css/sass:./assets/css/dist",
+    "b--footer": "webpack --config ./assets/js/dist/components/Footer/webpack.config.cjs",
+    "w": "concurrently -k -n 'TSC,SASS' -c 'blue,magenta' \"npm run tsw\" \"npm run sassw\""
+  }
+}
