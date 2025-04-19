@@ -1,0 +1,95 @@
+@use "../abstracts/mixins/index.scss" as *;
+
+.landingHero {
+  @include flex-center(column, center);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.landingTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-default);
+}
+
+.landingDescription {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-large);
+  max-width: 600px;
+}
+
+.animatedLink,
+.animatedButton {
+  position: relative;
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-border);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+  overflow: hidden;
+
+  @include transition(transform, var(--transition-default));
+
+  &::after,
+  &::before {
+    @include circle-ripple(rgba(100, 100, 255, 0.2));
+    @include transition(all, var(--transition-slow));
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+
+    &::after,
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.floatingImages {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-top: 3rem;
+  perspective: 1000px;
+}
+
+.floatingImages img {
+  position: absolute;
+  width: 150px;
+  cursor: pointer;
+  @include transition(all, 0.5s);
+
+  &:hover {
+    transform: rotateY(20deg) translateZ(50px) scale(1.1);
+    z-index: 10;
+  }
+
+  &:active {
+    transform: rotateY(-20deg) translateZ(80px) scale(1.2);
+    z-index: 15;
+  }
+}
+
+.bgWrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.anhangaBg {
+  object-fit: contain;
+  padding-block: 2rem;
+  object-position: center;
+  filter: grayscale(0.4);
+  aspect-ratio: 16/9;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out,
+    mix-blend-mode 0.17s ease-in-out;
+  z-index: -1;
+}

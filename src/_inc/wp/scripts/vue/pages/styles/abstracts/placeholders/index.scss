@@ -1,0 +1,19 @@
+%hover-transform {
+  @include transition(transform, var(--transition-default));
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+%hidden-header {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+%button-reset {
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}

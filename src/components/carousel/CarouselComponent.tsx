@@ -6,7 +6,7 @@ import {
   generateCarousel,
 } from "src/lib/handlers/handlersStyles";
 import { CarouselProps } from "src/lib/declarations/interfaces";
-import { nullishDiv } from "src/lib/declarations/types";
+import { nlDiv } from "src/lib/declarations/types";
 import { ErrorBoundary } from "react-error-boundary";
 // import LoginMainBody from "./LoginMainBody";
 import CarouselImg from "./CarouselImg";
@@ -23,10 +23,10 @@ export default function CarouselComponent({
   // console.log("!CAROUSEL: 3.1. Reached Component call");
   const [imageList, setImageList] = useState<string[]>(imgNames);
   const [loaded, setLoaded] = useState<boolean>(false);
-  const mainRef = useRef<nullishDiv>(null);
-  const carouselRef = useRef<nullishDiv>(null);
-  const divImgRef = useRef<nullishDiv>(null);
-  const dotsRef = useRef<nullishDiv>(null);
+  const mainRef = useRef<nlDiv>(null);
+  const carouselRef = useRef<nlDiv>(null);
+  const divImgRef = useRef<nlDiv>(null);
+  const dotsRef = useRef<nlDiv>(null);
   useEffect(() => {
     // console.log("!CAROUSEL: 4.1. Reached carouselRef useEffect");
     try {

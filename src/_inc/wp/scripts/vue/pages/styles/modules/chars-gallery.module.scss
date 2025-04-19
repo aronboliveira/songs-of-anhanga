@@ -1,0 +1,28 @@
+.gallery-label-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 0.3em 0.8em;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.gallery-label-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.gallery-label-btn.clicked::after {
+  content: "";
+  display: inline-block;
+  margin-left: 0.5em;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  transform: scale(1.4);
+}

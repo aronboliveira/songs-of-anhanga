@@ -9,12 +9,12 @@ import {
   htmlElementNotFound,
   typeError,
 } from "src/lib/handlers/handlersErrors";
-import { nullishDiv } from "src/lib/declarations/types";
+import { nlDiv } from "src/lib/declarations/types";
 import ClassFigure from "src/components/classes/ClassFigure";
 
 export default function ClassPanel(props: ClassPanelProps) {
   const router = useRouter();
-  const mainRef = useRef<nullishDiv>(null);
+  const mainRef = useRef<nlDiv>(null);
   const [mounted, setMount] = useState<boolean>(false);
   const capitalizedClass = capitalizeFirstLetter(props.className);
   useEffect(() => {

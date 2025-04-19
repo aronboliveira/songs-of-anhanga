@@ -19,9 +19,9 @@ import {
 import { gSessionProvider, roots } from "../controller";
 import { Root, createRoot } from "react-dom/client";
 import LoginMainBody from "src/components/main/bodies/LoginMainBody";
-import NewUserPanel from "src/pages/userPanelNew";
+import NewUserPanel from "src/hooks/userPanelNew";
 import { DataProvider } from "../declarations/classes";
-import ActiveUserPanel from "src/pages/userPanelActive";
+import ActiveUserPanel from "src/hooks/userPanelActive";
 import {
   fillSection,
   formatForBst,

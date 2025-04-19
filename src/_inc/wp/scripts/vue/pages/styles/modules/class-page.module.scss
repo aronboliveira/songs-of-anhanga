@@ -1,0 +1,44 @@
+.class-page {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+
+  .class-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    .class-title {
+      font-size: 2.5rem;
+    }
+    .class-path {
+      font-style: italic;
+      color: #666;
+    }
+  }
+
+  .class-block {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+
+    &.right {
+      flex-direction: row-reverse;
+    }
+
+    .class-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .class-image img:hover {
+      transform: scale(1.03) rotateZ(1deg);
+    }
+
+    .class-description {
+      flex: 1;
+      font-size: 1.1rem;
+    }
+  }
+}

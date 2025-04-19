@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import App from "../../../pages/index";
 import {
   NextRouterInstance,
-  nullishMain,
+  nlDiv,
+  nlMain,
 } from "../../../lib/declarations/types";
 import { ErrorBoundary } from "react-error-boundary";
 import {
@@ -40,34 +41,54 @@ import clearRootDef, {
 } from "src/lib/handlers/handlersDef";
 
 export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
-  const modalsRefsDispatch = useDispatch<AppThunk>();
-  const carouselSelect = useSelector<
-    StoreStateConfiguration,
-    CarouselImgsState
-  >((s: StoreStateConfiguration) => s.carouselImgs);
-  const mainElRef = useRef<nullishMain>(null);
-  const [stateCarousel, setCarousel] = useState<number>(0);
-  const selectRouter = useSelector<RouterSelectState, NextRouterInstance>(
-    state => state.router
-  );
-  const renderCarousel = async (): Promise<void> => {
-    const mainEl = document.querySelector("main");
-    const mainId = mainEl?.id || "loginMainEl";
-    try {
-      if (!(mainEl instanceof HTMLElement))
-        throw htmlElementNotFound(
-          mainEl,
-          `<main> element for ${LoginMainBody.prototype.constructor.name}`,
-          ["HTMLElement"]
+  const modalsRefsDispatch = useDispatch<AppThunk>(),
+    carouselSelect = useSelector<StoreStateConfiguration, CarouselImgsState>(
+      (s: StoreStateConfiguration) => s.carouselImgs
+    ),
+    mainBodyRef = useRef<nlDiv>(null),
+    mainElRef = useRef<nlMain>(null),
+    [stateCarousel, setCarousel] = useState<number>(0),
+    selectRouter = useSelector<RouterSelectState, NextRouterInstance>(
+      state => state.router
+    ),
+    renderCarousel = async (): Promise<void> => {
+      const mainEl = document.querySelector("main");
+      const mainId = mainEl?.id || "loginMainEl";
+      try {
+        if (!(mainEl instanceof HTMLElement))
+          throw htmlElementNotFound(
+            mainEl,
+            `<main> element for ${LoginMainBody.prototype.constructor.name}`,
+            ["HTMLElement"]
+          );
+        if (mainEl.id === "") mainEl.id = "loginMainEl";
+      } catch (eM) {
+        console.error(
+          `Error executing routine for fetching <main>:\n${
+            (eM as Error).message
+          }`
         );
-      if (mainEl.id === "") mainEl.id = "loginMainEl";
-    } catch (eM) {
-      console.error(
-        `Error executing routine for fetching <main>:\n${(eM as Error).message}`
-      );
-    }
-    fetchImagesDef(mainEl, mainId, props.root);
-  };
+      }
+      fetchImagesDef(mainEl, mainId, props.root);
+    },
+    [header, setHeader] = useState<JSX.Element>(<></>),
+    [footer, setFooter] = useState<JSX.Element>(<></>);
+  useEffect(() => {
+    [
+      ...Array.from(document.getElementsByTagName("header")),
+      ...Array.from(document.getElementsByTagName("footer")),
+    ].forEach(e => e?.isConnected && e.remove());
+    setTimeout(() => {
+      for (const r of [mainBodyRef.current, mainElRef.current]) {
+        if (!r) continue;
+        const tr = "height 0.5s ease-in-out";
+        if (!getComputedStyle(r).transition) r.style.transition = tr;
+        else r.style.transition += `, ${tr}`;
+      }
+      setHeader(<HeaderMain idf={`LoginMainBody`} root={props.root} />);
+      setFooter(<FooterLandingPage />);
+    }, 200);
+  }, []);
   //image fetch
   useEffect(() => {
     try {
@@ -331,10 +352,10 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
         />
       )}
     >
-      <div id="mainBody">
-        <HeaderMain idf={`LoginMainBody`} root={props.root} />
+      <div id="mainBody" ref={mainBodyRef}>
+        {header}
         <main ref={mainElRef}></main>
-        <FooterLandingPage />
+        {footer}
       </div>
     </ErrorBoundary>
   );

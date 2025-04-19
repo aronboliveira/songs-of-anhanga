@@ -1,0 +1,41 @@
+#class-search-bar {
+  margin-bottom: 2rem;
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  option {
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .input-group {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  ul.list-group {
+    border-radius: 0.375rem;
+  }
+
+  .list-group-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .list-group-item.active {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+}

@@ -2,7 +2,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import GenericErrorComponent from "../errors/ErrorComponentGeneric";
 import { CarouselImgProps } from "src/lib/declarations/interfaces";
 import { useRef, useEffect } from "react";
-import { nullishDiv, nullishImg } from "src/lib/declarations/types";
+import { nlDiv, nullishImg } from "src/lib/declarations/types";
 import {
   htmlElementNotFound,
   markWithCommentary,
@@ -15,7 +15,7 @@ import {
 
 export default function CarouselImg(props: CarouselImgProps): JSX.Element {
   // console.log("!CAROUSEL: 9. Reached CarouselImg call");
-  const itemRef = useRef<nullishDiv>(null);
+  const itemRef = useRef<nlDiv>(null);
   const imgRef = useRef<nullishImg>(null);
   useEffect(() => {
     // console.log("!CAROUSEL: 10.1. Reached useEffect for CarouselImg");

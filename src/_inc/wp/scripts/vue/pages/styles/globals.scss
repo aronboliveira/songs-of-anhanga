@@ -1,0 +1,249 @@
+@import "./abstracts/vars/index.scss";
+@import "./abstracts/mixins/index.scss";
+@import "./abstracts/placeholders/index.scss";
+
+input:valid {
+  border-color: #0a0;
+}
+
+input:invalid {
+  border-color: #c00;
+}
+
+span.weak {
+  color: #c00;
+}
+
+span.medium {
+  color: #f90;
+}
+
+span.strong {
+  color: #0a0;
+}
+
+*STYLE* .form-section {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: var(--spacing-large);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-large);
+}
+
+.form-wrapper {
+  margin-bottom: var(--spacing-default);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-default);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  @include transition(all, var(--transition-default));
+  &:focus {
+    transform: scale(1.02);
+    border-color: #888;
+    box-shadow: 0 0 8px rgba(100, 100, 255, 0.2);
+  }
+}
+
+.form-button {
+  padding: 0.75rem;
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  @include transition(background, var(--transition-default));
+
+  &:hover {
+    background: #555;
+  }
+}
+
+.form-error {
+  color: #c00;
+  font-size: 0.9rem;
+}
+
+.form-success {
+  color: #0a0;
+  font-size: 0.9rem;
+}
+
+.form-links {
+  margin-top: var(--spacing-default);
+  font-size: 0.9rem;
+
+  a {
+    text-decoration: none;
+    color: #444;
+    @include transition(color, var(--transition-default));
+
+    &:hover {
+      color: #666;
+    }
+  }
+}
+
+.site-footer {
+  background: #f9f9f9;
+  padding: var(--spacing-default) var(--spacing-large);
+  margin-top: var(--spacing-large);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+
+  .footer-nav {
+    margin-bottom: var(--spacing-default);
+
+    ul {
+      display: flex;
+      gap: var(--spacing-default);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        // each social icon <li>
+      }
+
+      .social-icon {
+        position: relative;
+        display: inline-block;
+        padding: var(--spacing-default);
+        border: 2px solid var(--color-border);
+        border-radius: 4px;
+        text-decoration: none;
+        color: var(--color-text);
+        @include transition(all, var(--transition-default));
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+        i {
+          font-size: 1.25rem;
+        }
+
+        &:hover {
+          box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  .footer-address {
+    margin-bottom: var(--spacing-default);
+    font-style: normal;
+
+    a {
+      color: var(--color-text);
+      text-decoration: none;
+      @include transition(color, var(--transition-default));
+
+      &:hover {
+        color: #666;
+      }
+    }
+  }
+
+  /* Example of the final section. */
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
+
+.nav-link,
+.nav-button {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-button:hover {
+  color: #666;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--color-light-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  opacity: 1;
+  transform: translateY(0);
+  @include transition(opacity, var(--transition-default));
+  @include transition(transform, var(--transition-default));
+  // We combine or can write multiple transitions,
+  // or do them in one line, your call.
+}
+
+.site-header.hidden {
+  @extend %hidden-header;
+}
+
+.main-nav {
+  @include flex-center(space-between, center);
+  padding: var(--spacing-default) var(--spacing-large);
+}
+
+.nav-left,
+.nav-right {
+  @include flex-center(flex-start, center);
+  gap: 1.5rem;
+}
+
+.nav-logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+  @include transition(color, var(--transition-default));
+
+  &:hover {
+    color: #666;
+  }
+}
+
+.nav-button {
+  @extend %button-reset;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+  font-weight: bold;
+  @include transition(all, var(--transition-default));
+
+  &:hover {
+    color: #666;
+  }
+}

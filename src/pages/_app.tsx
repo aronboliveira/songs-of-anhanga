@@ -1,52 +1,49 @@
-import { ErrorBoundary } from "react-error-boundary";
-import GenericErrorComponent from "../components/errors/ErrorComponentGeneric";
-import { JSX } from "react/jsx-runtime";
-import { store } from "../redux/store";
-import { Provider } from "react-redux";
 import App, { AppContext } from "next/app";
-import { GameAppProps } from "src/lib/declarations/interfaces";
 import { AppProps } from "next/dist/pages/_app";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/style.scss";
+import HeaderDefault from "src/components/headers/HeaderDefault";
+import { Toaster, toast } from "react-hot-toast";
 import "../styles/gStyle.scss";
-import "../styles/classPanelStyle.scss";
-import Head from "next/head";
-
-export default function GameApp({
-  Component,
-  pageProps,
-}: AppProps): JSX.Element {
+import "../styles/globals.scss";
+import "../styles/index.scss";
+interface MyAppProps extends AppProps {
+  pageProps: AppProps["pageProps"] & { isLoggedIn: boolean };
+}
+export default function GameApp({ Component, pageProps }: MyAppProps) {
   return (
-    <Provider store={store}>
-      <ErrorBoundary
-        FallbackComponent={() => (
-          <GenericErrorComponent
-            message={`Erro carregando a tela principal! 🕷📃`}
-          />
-        )}
-      >
-        <Head>
-          <title>Game App</title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=yes, maximum-scale=2.0, minimum-scale=0.5"
-          />
-        </Head>
-        <div id="homeRoot">
-          <Component {...pageProps} />
-        </div>
-      </ErrorBoundary>
-    </Provider>
+    <div id="homeRoot">
+      <Toaster />
+      <HeaderDefault isLoggedIn={pageProps.isLoggedIn} />
+      <Component {...pageProps} />
+    </div>
   );
 }
-GameApp.getInitialProps = async (ctx: AppContext): Promise<GameAppProps> => {
-  // console.log("AppTree in App:");
-  // console.log(ctx.AppTree);
-  // console.log("Component in App:");
-  // console.log(ctx.Component);
-  // console.log("router in App:");
-  // console.log(ctx.router);
-  // console.log("ctx in App:");
-  // console.log(ctx.ctx);
-  return { ...(await App.getInitialProps(ctx)) };
+GameApp.getInitialProps = async (appCtx: AppContext) => {
+  let isLoggedIn = false,
+    appProps = {
+      pageProps: {},
+    };
+  try {
+    appProps = await App.getInitialProps(appCtx);
+    const { ctx } = appCtx,
+      proto = ctx.req?.headers["x-forwarded-proto"] ?? "http",
+      host = ctx.req?.headers?.host ?? "localhost",
+      res = await fetch(`${proto}://${host}/api/auth/isLoggedIn`);
+    if (!res.ok) throw new Error(`Unsuccessful fetch`);
+    const loggedIn = (await res.json()).isLoggedIn;
+    loggedIn && toast.success(`Successfully verified log in!`);
+  } catch (e) {
+    toast.error(`Ops! There was an error while checking if you are logged in`);
+    console.error(
+      `Error executing getServerSideProps for HeaderDefault:\n ${
+        (e as Error).name
+      } — ${(e as Error).message}`
+    );
+  }
+  return {
+    ...appProps,
+    pageProps: {
+      ...appProps.pageProps,
+      isLoggedIn,
+    },
+  };
 };

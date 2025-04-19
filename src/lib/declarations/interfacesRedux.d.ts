@@ -14,6 +14,11 @@ import { NextRouter } from "next/router";
 import { GetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
 import { Action, AnyAction } from "redux";
 
+export interface LandingStoreState {
+  userName: string;
+  loggedIn: boolean;
+}
+
 export interface AccordionRefsState {
   [k: string]: string;
 }
