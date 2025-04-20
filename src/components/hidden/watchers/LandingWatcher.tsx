@@ -168,7 +168,7 @@ export default function LandingWatcher(): JSX.Element {
         ["data-fallback", "true"],
       ])
         img.setAttribute(attr[0], attr[1]);
-      document.replaceChild(abg, img);
+      abg.parentElement?.replaceChild(abg, img);
     }, 200);
     b.setAttribute(`data-${chkImg}`, "true");
   }, []);

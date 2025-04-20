@@ -13,6 +13,10 @@ setupTest.js
 # production
 /build
 .env
+.next
+.build
+.out
+.dist
 
 # misc
 .DS_Store
