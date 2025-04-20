@@ -25,15 +25,15 @@ export async function fetchImagesDef(
   mainEl: voidishHtmlEl,
   mainId: string,
   root: voidishRoot
-): Promise<void> {
+): Promise<JSX.Element> {
   try {
-    if (!(mainEl instanceof HTMLElement))
-      throw htmlElementNotFound(mainEl, `validation of mainEl for fetchImages`);
-    if (typeof mainId !== "string")
-      throw typeError(mainId, `validation of mainId in fetchImages`, [
-        "string",
-      ]);
-    const res = await fetch(`data/images.json`, { method: "GET" });
+    // if (!(mainEl instanceof HTMLElement))
+    //   throw htmlElementNotFound(mainEl, `validation of mainEl for fetchImages`);
+    // if (typeof mainId !== "string")
+    //   throw typeError(mainId, `validation of mainId in fetchImages`, [
+    //     "string",
+    //   ]);
+    const res = await fetch(`/data/images.json`, { method: "GET" });
     if (!res.ok) throw fetchError(res);
     const parsedImages = await res.json();
     // @ts-ignore
@@ -42,6 +42,7 @@ export async function fetchImagesDef(
     ).filter(
       subdir => subdir[0] === "campaigns" && subdir[1] instanceof Object
     )[0];
+    console.log();
     if (campaigns.length < 1)
       throw ListError(
         campaigns,
@@ -67,7 +68,7 @@ export async function fetchImagesDef(
         for (const campaignName of campaignNames) {
           if (!documentData.carouselImgs[mainId])
             documentData.carouselImgs[mainId] = [];
-          documentData.carouselImgs[mainId].push(
+          documentData.carouselImgs[mainId]?.push(
             `${(campaignName as FileProps).name}${
               (campaignName as FileProps).extension
             }`
@@ -78,28 +79,29 @@ export async function fetchImagesDef(
       });
     documentData.carouselImgs[mainId] &&
       documentData.carouselImgs[mainId].length === 0 &&
-      documentData.carouselImgs[mainId].push("");
-    !mainEl && console.warn("Error fetching main element");
-    if (mainEl && !roots[`${mainId}`]) roots[`${mainId}`] = createRoot(mainEl);
-    if (!document.querySelector(".carousel")) {
-      // console.log(
-      //   "!CAROUSEL: 1.2. REACHED RENDERING POINT THROUGH RENDER CAROUSEL"
-      // );
-      roots[`${mainId}`].render(
-        <CarouselComponent
-          root={root}
-          ParentComponentName="LoginMainBody"
-          imgNames={documentData.carouselImgs[mainId]}
-        />
-      );
-    }
+      documentData.carouselImgs[mainId]?.push("");
+    // !mainEl && console.warn("Error fetching main element");
+    // if (mainEl && !roots[`${mainId}`]) roots[`${mainId}`] = createRoot(mainEl);
+    // if (!document.querySelector(".carousel")) {
+    // console.log(
+    //   "!CAROUSEL: 1.2. REACHED RENDERING POINT THROUGH RENDER CAROUSEL"
+    // );
+    return (
+      <CarouselComponent
+        root={root}
+        ParentComponentName="LoginMainBody"
+        imgNames={documentData.carouselImgs[mainId]}
+      />
+    );
+    // }
+    // return <></>;
     // console.log("CAROUSEL IMAGES");
     // console.log(documentData.carouselImgs[mainId]);
   } catch (e) {
     console.error(
       `Error defining images for carousel: ${(e as Error).message}`
     );
-    documentData.carouselImgs[mainId].push("");
-    roots[`${mainId}`].render(<></>);
+    documentData.carouselImgs[mainId]?.push("");
+    return <></>;
   }
 }

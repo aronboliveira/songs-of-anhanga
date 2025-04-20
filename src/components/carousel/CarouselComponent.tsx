@@ -16,32 +16,96 @@ import { parseFinite } from "src/lib/handlers/handlersMath";
 import GenericErrorComponent from "../errors/ErrorComponentGeneric";
 
 export default function CarouselComponent({
-  ParentComponentName,
+  // ParentComponentName,
   // root,
   imgNames,
 }: CarouselProps): JSX.Element {
   // console.log("!CAROUSEL: 3.1. Reached Component call");
-  const [imageList, setImageList] = useState<string[]>(imgNames);
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const mainRef = useRef<nlDiv>(null);
-  const carouselRef = useRef<nlDiv>(null);
-  const divImgRef = useRef<nlDiv>(null);
-  const dotsRef = useRef<nlDiv>(null);
+  const [imageList, setImageList] = useState<string[]>(imgNames),
+    [imgs, setImgs] = useState<JSX.Element[]>(
+      Array.from({ length: imgNames.length }).map(l => (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading {`${l}`}...</span>
+        </div>
+      ))
+    ),
+    [loaded, setLoaded] = useState<boolean>(false),
+    mainRef = useRef<nlDiv>(null),
+    carouselRef = useRef<nlDiv>(null),
+    divImgRef = useRef<nlDiv>(null),
+    dotsRef = useRef<nlDiv>(null),
+    checkImgNames = (): string[] => {
+      if (imgNames.length === 0) console.warn(`No image names available`);
+      if (imgNames.some(imgName => imgName === "")) {
+        imgNames.forEach((imgName, i) => {
+          imgName === "" && console.warn(`imgName ${i} is a empty string`);
+        });
+      }
+      return Array.from(new Set(imgNames));
+    },
+    renderImgs = (opts?: { bug?: boolean }): JSX.Element[] => {
+      return opts?.bug
+        ? Array.from({ length: imgNames.length }).map(() => (
+            <button type="button" className="btn btn-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-bug-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4.978.855a.5.5 0 1 0-.956.29l.41 1.352A5 5 0 0 0 3 6h10a5 5 0 0 0-1.432-3.503l.41-1.352a.5.5 0 1 0-.956-.29l-.291.956A5 5 0 0 0 8 1a5 5 0 0 0-2.731.811l-.29-.956z"></path>
+                <path d="M13 6v1H8.5v8.975A5 5 0 0 0 13 11h.5a.5.5 0 0 1 .5.5v.5a.5.5 0 1 0 1 0v-.5a1.5 1.5 0 0 0-1.5-1.5H13V9h1.5a.5.5 0 0 0 0-1H13V7h.5A1.5 1.5 0 0 0 15 5.5V5a.5.5 0 0 0-1 0v.5a.5.5 0 0 1-.5.5zm-5.5 9.975V7H3V6h-.5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 0-1 0v.5A1.5 1.5 0 0 0 2.5 7H3v1H1.5a.5.5 0 0 0 0 1H3v1h-.5A1.5 1.5 0 0 0 1 11.5v.5a.5.5 0 1 0 1 0v-.5a.5.5 0 0 1 .5-.5H3a5 5 0 0 0 4.5 4.975"></path>
+              </svg>
+              <strong>Reload Page</strong>
+            </button>
+          ))
+        : imageList.map((img, i) => {
+            return (
+              <CarouselImg
+                key={`carouselImg-${carouselRef.current!.id || `brk`}${i}`}
+                subDir={"img/campaigns/"}
+                fullName={img}
+              />
+            );
+          });
+    },
+    renderIndicators = (): JSX.Element[] => {
+      const dotBtns = imageList.map((img, i) => {
+        // console.log(`RENDERING INDICATOR ${i}`);
+        return (
+          <button
+            key={`carouselIndicator-${i}`}
+            id={`indicator${capitalizeFirstLetter(img)}`}
+            className={`dot dot${
+              capitalizeFirstLetter(
+                carouselRef.current?.id || "unidentified"
+              ) || "Unidentified"
+            }`}
+          ></button>
+        );
+      });
+      return dotBtns;
+    };
+  // useEffect(() => {
+  // if (imgCounter < imageList.length) return;
+  // }, [imgCounter]);
   useEffect(() => {
     // console.log("!CAROUSEL: 4.1. Reached carouselRef useEffect");
     try {
-      if (!(mainRef.current instanceof HTMLElement))
-        throw htmlElementNotFound(
-          mainRef.current,
-          `Main Reference in ${ParentComponentName}`,
-          ["HTMLElement"]
-        );
-      if (!(carouselRef.current instanceof HTMLElement))
-        throw htmlElementNotFound(
-          carouselRef.current,
-          `Carouself Reference in ${ParentComponentName}`,
-          ["HTMLElement"]
-        );
+      // if (!(mainRef.current instanceof HTMLElement))
+      //   throw htmlElementNotFound(
+      //     mainRef.current,
+      //     `Main Reference in ${ParentComponentName}`,
+      //     ["HTMLElement"]
+      //   );
+      // if (!(carouselRef.current instanceof HTMLElement))
+      //   throw htmlElementNotFound(
+      //     carouselRef.current,
+      //     `Carouself Reference in ${ParentComponentName}`,
+      //     ["HTMLElement"]
+      //   );
       // console.log("!CAROUSEL: 4.2. useEffect for carouselRef try succesful");
       generateCarousel(true, carouselRef.current);
       try {
@@ -82,7 +146,7 @@ export default function CarouselComponent({
           difBottomFooterSects >= 0
         ) {
           carouselRef.current!.style.transform = `translate(0, -${
-            (parseFinite(getComputedStyle(carouselRef.current).height) +
+            (parseFinite(getComputedStyle(carouselRef.current!).height) +
               difBottomFooterSects) /
             20
           }px)`;
@@ -150,50 +214,10 @@ export default function CarouselComponent({
         `Error executing useEffect for Carousel Dots:\n${(e as Error).message}`
       );
     }
-  }, [dotsRef, loaded, imageList]);
-  const checkImgNames = (): string[] => {
-    if (imgNames.length === 0) console.warn(`No image names available`);
-    if (imgNames.some(imgName => imgName === "")) {
-      imgNames.forEach((imgName, i) => {
-        imgName === "" && console.warn(`imgName ${i} is a empty string`);
-      });
-    }
-    return Array.from(new Set(imgNames));
-  };
-  const renderImgs = (): JSX.Element[] => {
-    // console.log("!CAROUSEL: 8. Reached renderImgs");
-    // console.log(imageList);
-    // console.log("!loaded " + loaded);
-    return imageList.map((img, i) => {
-      // if (i + 1 === imageList.length)
-      // console.log(
-      //   `!CAROUSEL: 8.${i}. Rendering CarouselImg, length ${imageList.length}`
-      // );
-      return (
-        <CarouselImg
-          key={`carouselImg-${carouselRef.current!.id || `brk`}${i}`}
-          subDir={"img/campaigns/"}
-          fullName={img}
-        />
-      );
-    });
-  };
-  const renderIndicators = (): JSX.Element[] => {
-    const dotBtns = imageList.map((img, i) => {
-      // console.log(`RENDERING INDICATOR ${i}`);
-      return (
-        <button
-          key={`carouselIndicator-${i}`}
-          id={`indicator${capitalizeFirstLetter(img)}`}
-          className={`dot dot${
-            capitalizeFirstLetter(carouselRef.current?.id || "unidentified") ||
-            "Unidentified"
-          }`}
-        ></button>
-      );
-    });
-    return dotBtns;
-  };
+  }, [dotsRef, imgs]);
+  useEffect(() => {
+    setImgs(renderImgs());
+  }, [imageList]);
   return (
     <ErrorBoundary
       FallbackComponent={() => (
@@ -211,7 +235,7 @@ export default function CarouselComponent({
               </div>
               <div id="mainCarousel" ref={divImgRef}>
                 <ErrorBoundary FallbackComponent={() => <></>}>
-                  {loaded && renderImgs()}
+                  {imgs}
                 </ErrorBoundary>
               </div>
               <button></button>

@@ -8,6 +8,11 @@
   transition: #{$props} #{$time} #{$easing};
 }
 
+@mixin move-transition {
+  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out,
+    mix-blend-mode 0.17s ease-in-out, transform 1.5s ease-in-out;
+}
+
 @mixin circle-ripple($bgColor: rgba(100, 100, 255, 0.2)) {
   content: "";
   position: absolute;

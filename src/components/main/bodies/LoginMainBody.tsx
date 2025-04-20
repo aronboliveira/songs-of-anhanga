@@ -54,25 +54,28 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
     renderCarousel = async (): Promise<void> => {
       const mainEl = document.querySelector("main");
       const mainId = mainEl?.id || "loginMainEl";
-      try {
-        if (!(mainEl instanceof HTMLElement))
-          throw htmlElementNotFound(
-            mainEl,
-            `<main> element for ${LoginMainBody.prototype.constructor.name}`,
-            ["HTMLElement"]
-          );
-        if (mainEl.id === "") mainEl.id = "loginMainEl";
-      } catch (eM) {
-        console.error(
-          `Error executing routine for fetching <main>:\n${
-            (eM as Error).message
-          }`
-        );
-      }
-      fetchImagesDef(mainEl, mainId, props.root);
+      // try {
+      //   if (!(mainEl instanceof HTMLElement))
+      //     throw htmlElementNotFound(
+      //       mainEl,
+      //       `<main> element for ${LoginMainBody.prototype.constructor.name}`,
+      //       ["HTMLElement"]
+      //     );
+      //   if (mainEl.id === "") mainEl.id = "loginMainEl";
+      // } catch (eM) {
+      //   console.error(
+      //     `Error executing routine for fetching <main>:\n${
+      //       (eM as Error).message
+      //     }`
+      //   );
+      // }
+      const carousel = await fetchImagesDef(mainEl, mainId, props.root);
+      console.log(carousel);
+      setCarouselEl(carousel);
     },
     [header, setHeader] = useState<JSX.Element>(<></>),
-    [footer, setFooter] = useState<JSX.Element>(<></>);
+    [footer, setFooter] = useState<JSX.Element>(<></>),
+    [carouselEl, setCarouselEl] = useState<JSX.Element>(<></>);
   useEffect(() => {
     [
       ...Array.from(document.getElementsByTagName("header")),
@@ -106,17 +109,7 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
         .catch(err => fetchError(err));
       fillSection(mainElRef.current, `LoginMainBody`);
       formatForBst(mainElRef.current);
-      renderCarousel().then(() => {
-        // console.log("!CAROUSEL: 2.0. renderCarousel() then");
-        mainElRef.current &&
-          mainElRef.current.querySelectorAll("img").forEach(() => {
-            setCarousel(stateCarousel + 1);
-            // console.log(
-            //   `!CAROUSEL: 2.${stateCarousel}. Update value of stateCarousel: ` +
-            //     stateCarousel
-            // );
-          });
-      });
+      renderCarousel();
       formatForSelectors(mainElRef.current);
       syncAriaStates(mainElRef.current);
       return () => {
@@ -179,44 +172,41 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
     // console.log(stateCarousel);
     const mainEl = document.querySelector("main");
     const mainId = mainEl?.id || "loginMainEl";
-    if (!mainEl) console.warn("Error fetching main element");
-    if (mainEl) {
-      mainEl.innerHTML = `
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...<../span>
-      </div>
-      `;
-    }
-    const imgInterval = setInterval(() => {
-      try {
-        const _mainEl = document.querySelector("main");
-        const _mainId = _mainEl?.id || "loginMainEl";
-        // console.log("ATTEMP TO RENDER CAROUSEL WITH SELECTOR " + _mainId);
-        if (!_mainEl)
-          throw htmlElementNotFound(
-            _mainEl,
-            `Reference for <main> em interval`,
-            ["HTMLElement"]
-          );
-        if (!documentData.carouselImgs[_mainId] && !carouselSelect[mainId])
-          throw stringError(_mainId, "loginMainEl");
-        renderCarousel().then(() => {
-          // console.log(
-          //   "!CAROUSEL: 11. Reached point to render CarouselComponent on useEffect for stateCarousel"
-          // );
-        });
-        _mainEl &&
-          _mainEl.querySelector(".carousel") &&
-          _mainEl.querySelector("img") &&
-          clearInterval(imgInterval);
-      } catch (e) {
-        console.error(
-          `Error executing interval for rendering main carousel:\n${
-            (e as Error).message
-          }`
-        );
-      }
-    }, 100);
+    // if (!mainEl) console.warn("Error fetching main element");
+    // if (mainEl) {
+    //   mainEl.innerHTML = `
+    //   <div class="spinner-border" role="status">
+    //     <span class="visually-hidden">Loading...</span>
+    //   </div>
+    //   `;
+    // }
+    // // const imgInterval =
+    // setTimeout(() => {
+    //   try {
+    //     // const _mainEl = document.querySelector("main");
+    //     // const _mainId = _mainEl?.id || "loginMainEl";
+    //     // console.log("ATTEMP TO RENDER CAROUSEL WITH SELECTOR " + _mainId);
+    //     // if (!_mainEl)
+    //     //   throw htmlElementNotFound(
+    //     //     _mainEl,
+    //     //     `Reference for <main> em interval`,
+    //     //     ["HTMLElement"]
+    //     //   );
+    //     // if (!documentData.carouselImgs[_mainId] && !carouselSelect[mainId])
+    //     //   throw stringError(_mainId, "loginMainEl");
+    //     renderCarousel();
+    //     // _mainEl &&
+    //     //   _mainEl.querySelector(".carousel") &&
+    //     //   _mainEl.querySelector("img") &&
+    //     //   clearInterval(imgInterval);
+    //   } catch (e) {
+    //     console.error(
+    //       `Error executing interval for rendering main carousel:\n${
+    //         (e as Error).message
+    //       }`
+    //     );
+    //   }
+    // }, 100);
     setTimeout(() => {
       if (!document.querySelector(".carousel")) {
         console.warn(`Failed to render carousel:\n
@@ -225,10 +215,9 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
         };\n
         What was the recognized id? ${
           document.querySelector("main")?.id || "none"
-        };\n
-        Was <main> available as a root? ${`${mainId}` in roots}.`);
+        };\n`);
       }
-      clearInterval(imgInterval);
+      // clearInterval(imgInterval);
       if (`${mainId}` in roots) {
         let alertRoot = roots[`${mainId}`];
         if (document.querySelector("main")?.querySelector(".carousel"))
@@ -333,7 +322,7 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
           location.href.endsWith(modalState)
         ) &&
           !possiblePages.some(pageState => location.href.endsWith(pageState)) &&
-          history.pushState({}, "", "/");
+          history.pushState({}, "", "/home");
       }, 1000);
     } catch (e) {
       console.error(
@@ -354,7 +343,7 @@ export default function LoginMainBody(props: LoginMainBodyProps): JSX.Element {
     >
       <div id="mainBody" ref={mainBodyRef}>
         {header}
-        <main ref={mainElRef}></main>
+        <main ref={mainElRef}>{carouselEl}</main>
         {footer}
       </div>
     </ErrorBoundary>

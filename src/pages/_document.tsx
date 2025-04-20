@@ -36,6 +36,11 @@ export default function MyDocument() {
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap"
+          as="style"
+        />
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" />
       </Head>
       <body>

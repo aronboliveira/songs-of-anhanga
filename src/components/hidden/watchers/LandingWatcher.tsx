@@ -3,24 +3,34 @@ import { useEffect } from "react";
 import { nullishEl } from "src/lib/declarations/types";
 export default function LandingWatcher(): JSX.Element {
   useEffect(() => {
-    const b = document.body;
+    const b = document.body,
+      ht = document.querySelector("html");
     if (!b) return;
     const bp = "background-painting";
     if (b.getAttribute(`data-${bp}`) === "true") return;
     const tr = "background 1s ease-in-out";
     b.style.backgroundImage = "none";
-    b.setAttribute(`data-${bp}`, "true");
     setTimeout(() => {
-      b.style.transition = tr;
-      b.style.background = "radial-gradient(at 50% 0%, white 0%, black 100%)";
-      setTimeout(() => {
-        requestAnimationFrame(() => {
-          b.style.background =
-            "radial-gradient(at 50% -200%, white 0%, black 100%)";
-          b.removeAttribute(`data-${bp}`);
+      for (const tg of [b, ht]) {
+        if (!tg?.isConnected) continue;
+        tg.style.transition = tr;
+        tg.style.background =
+          "radial-gradient(at 50% 0%, white 0%, black 100%)";
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            tg.style.background =
+              "radial-gradient(at 50% -200%, white 0%, black 100%)";
+            tg.removeAttribute(`data-${bp}`);
+          });
+        }, 1000);
+        b.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "center",
         });
-      }, 1000);
+      }
     }, 100);
+    b.setAttribute(`data-${bp}`, "true");
   }, []);
   useEffect(() => {
     let acc = 0,
@@ -73,6 +83,69 @@ export default function LandingWatcher(): JSX.Element {
       }
     }
     document.getElementById("homeRoot"), document.getElementById("__next");
+  }, []);
+  useEffect(() => {
+    (async () => {
+      const fts = [
+        {
+          tgs: ["#mainQuote"],
+          f: `Tangerine`,
+          rules: [
+            `font-family: "tangerinebold";
+            src: url("/fonts/tangerine/tangerine-bold-webfont.woff2") format("woff2"),
+              url("/fonts/tangerine/tangerine-bold-webfont.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;`,
+            `font-family: "tangerineregular";
+            src: url("/fonts/tangerine/tangerine-regular-webfont.woff2") format("woff2"),
+              url("/fonts/tangerine/tangerine-regular-webfont.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;`,
+          ],
+        },
+      ];
+      for (const { tgs, f, rules } of fts) {
+        try {
+          await document.fonts.load(`1em ${f}`);
+          if (!document.fonts.check(`1em ${f}`))
+            throw new Error(`Check failed`);
+          for (const ss of Array.from(document.styleSheets)) {
+            if (
+              !Array.from(ss.cssRules).some(r => /font\-face/g.test(r.cssText))
+            )
+              continue;
+            for (const r of rules) ss.insertRule(`@font-face { ${r} }`);
+          }
+          for (const t of tgs) {
+            const q = document.querySelector(t);
+            if (!(q instanceof HTMLElement)) continue;
+            q.style.fontFamily = f;
+          }
+        } catch (e) {
+          console.error(
+            `Error attempting to load fontface ${f} : ${(e as Error).name} — ${
+              (e as Error).message
+            }`
+          );
+        }
+      }
+    })();
+  }, []);
+  useEffect(() => {
+    const mq = `moving-quote`,
+      b = document.body;
+    if (b.getAttribute(`data-${mq}`) === "true") return;
+    setTimeout(() => {
+      const q = document.getElementById(`mainQuote`);
+      if (q) {
+        q.style.opacity = "0.8";
+        const tf = getComputedStyle(q).transform;
+        console.log(tf);
+        q.style.transform = tf.replace(/\-[0-9]+(?:\.[0-9]+)?.*/g, "0");
+      }
+      b.removeAttribute(`data-${mq}`);
+    }, 1000);
+    b.setAttribute(`data-${mq}`, "true");
   }, []);
   return <span className={`watcher`} style={{ display: "none" }}></span>;
 }

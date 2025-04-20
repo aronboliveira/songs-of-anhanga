@@ -1,3 +1,4 @@
+"use client";
 import { Provider } from "react-redux";
 import { landingStore } from "src/redux/landingStore";
 import Image from "next/image";
@@ -19,21 +20,16 @@ export default function LandingPage(): JSX.Element {
           priority
         />
         <figcaption className={s.anhangaCapt}>
-          <blockquote
-            style={{
-              position: "absolute",
-              fontSize: "1.2rem",
-              fontWeight: 900,
-              width: "50%",
-              color: "#fffe",
-            }}
-          >
+          <blockquote id="mainQuote" className={s.mainQuote}>
             <p>
               In the heart of <u>Brazilian indigenous lore</u> dwells{" "}
               <strong>Anhanga</strong>, the <em>mysterious protector</em> of the
               forests and its creatures. Often depicted as a{" "}
               <b>shape-shifting spirit</b>, this enigmatic entity from{" "}
-              <abbr title="Tupi-Guarani mythology">
+              <abbr
+                title="Tupi-Guarani mythology"
+                style={{ textDecoration: "none" }}
+              >
                 <i>Tupi-Guarani </i>
               </abbr>
               traditions is both <em>feared and revered</em>. Legends say

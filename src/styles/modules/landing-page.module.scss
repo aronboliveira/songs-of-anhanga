@@ -90,12 +90,29 @@
   aspect-ratio: 16/9;
   min-height: 100vh;
   filter: grayscale(0.4);
+  transform: rotateY(180deg) scale(0.975);
   opacity: 0;
-  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out,
-    mix-blend-mode 0.17s ease-in-out;
+  border-radius: 0.5rem;
+  border: ridge 0.5rem #555f;
+  @include move-transition;
   z-index: -1;
+  overflow: hidden;
 }
 
 .anhangaCapt {
-  font-family: "Tangerine";
+  font-family: "Tangerine", cursive;
+}
+
+.mainQuote {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 50%;
+  color: #fffe;
+  top: 22%;
+  left: 5%;
+  opacity: 0;
+  transform: translateY(-75%);
+  overflow: ellipsis;
+  @include move-transition;
 }

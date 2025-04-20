@@ -1,4 +1,5 @@
 import { ErrorBoundary } from "react-error-boundary";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { LinkSocialIconProps } from "src/lib/declarations/interfaces";
 import ErrorComponentIcon from "../errors/ErrorComponentIcon";
 import Spinner from "../icons/states/IconSpiner";
@@ -6,40 +7,62 @@ import {
   capitalizeFirstLetter,
   textTransformPascal,
 } from "src/lib/handlers/handlersStyles";
-import { useRef, useEffect } from "react";
-import { nullishAnchor } from "src/lib/declarations/types";
 import { syncAriaStates } from "src/lib/handlers/handlersCommon";
-import { roots } from "src/lib/controller";
-import clearRootDef, {
-  attemptRenderSocialIconDef,
-} from "src/lib/handlers/handlersDef";
-
-export default function LinkSocialIcon(props: LinkSocialIconProps) {
-  const aRef = useRef<nullishAnchor>(null);
+import IconDiscord from "src/components/icons/social/IconDiscord";
+import IconFb from "src/components/icons/social/IconFb";
+import IconInst from "src/components/icons/social/IconInst";
+import IconX from "src/components/icons/social/IconX";
+export default function LinkSocialIcon({
+  href,
+  target,
+  rel,
+  iconCase,
+  innerTextL,
+}: LinkSocialIconProps): JSX.Element {
+  const aRef = useRef<HTMLAnchorElement>(null),
+    [view, setView] = useState<"loading" | "icon">("loading");
   useEffect(() => {
-    attemptRenderSocialIconDef(roots, aRef.current, props.iconCase);
-    syncAriaStates(aRef.current);
-    () => clearRootDef(roots, aRef.current?.id || "undefined");
-    return () => clearRootDef(roots, aRef.current?.id || "undefined");
-  }, [aRef]);
+    setView("loading");
+    aRef.current && syncAriaStates(aRef.current);
+    const raf = requestAnimationFrame(() => setView("icon"));
+    return () => cancelAnimationFrame(raf);
+  }, [iconCase]);
+  const iconElement = useMemo(() => {
+    switch (iconCase) {
+      case "discord":
+        return <IconDiscord />;
+      case "facebook":
+        return <IconFb />;
+      case "instagram":
+        return <IconInst />;
+      case "twitter":
+        return <IconX />;
+      default:
+        return <ErrorComponentIcon fill={true} />;
+    }
+  }, [iconCase]);
   return (
     <ErrorBoundary
       FallbackComponent={() => <ErrorComponentIcon fill={false} />}
     >
       <a
         ref={aRef}
-        id={`anchor${capitalizeFirstLetter(props.innerTextL)}`}
+        id={`anchor${capitalizeFirstLetter(innerTextL)}`}
         className="highlight"
-        href={`${props.href}`}
-        target={`${props.target}`}
-        rel={`${props.rel}`}
-        title={`${props.href}`}
+        href={href}
+        target={target}
+        rel={rel}
+        title={href}
       >
-        <Spinner
-          spinnerClass="spinner-grow"
-          spinnerColor="text-light"
-          message={`Loading icon for ${textTransformPascal(props.iconCase)}`}
-        />
+        {view === "loading" ? (
+          <Spinner
+            spinnerClass="spinner-grow"
+            spinnerColor="text-light"
+            message={`Loading icon for ${textTransformPascal(iconCase)}`}
+          />
+        ) : (
+          iconElement
+        )}
       </a>
     </ErrorBoundary>
   );

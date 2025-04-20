@@ -54,10 +54,8 @@ export default function HeaderDefault({
           ev.clientY > r.current.clientHeight &&
           r.current.hasAttribute(`data-${ps}`)
         ) {
-          console.log("more");
           r.current.removeAttribute(`data-${ps}`);
         } else if (ev.clientY <= r.current.clientHeight) {
-          console.log("minus");
           r.current.setAttribute(`data-${ps}`, "true");
           applyTranslation(
             getComputedStyle(r.current).transition,
@@ -77,7 +75,7 @@ export default function HeaderDefault({
     <header className="site-header" ref={r}>
       <nav className="main-nav">
         <div className="nav-left">
-          <a href="/" className="nav-logo">
+          <a href="/home" className="nav-logo">
             Folklore RPG
           </a>
           <a href="#story" className="nav-link">

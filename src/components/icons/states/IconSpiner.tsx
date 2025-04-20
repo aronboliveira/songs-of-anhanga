@@ -2,11 +2,12 @@ import { SpinnerComponentProps } from "src/lib/declarations/interfaces";
 import GenericErrorComponent from "../../errors/ErrorComponentGeneric";
 import { ErrorBoundary } from "react-error-boundary";
 
-export default function Spinner({
-  spinnerClass = "spinner-border",
-  spinnerColor = "",
-  message = "Loading...",
-}: SpinnerComponentProps): JSX.Element {
+export default function Spinner(
+  props: Partial<SpinnerComponentProps>
+): JSX.Element {
+  const spinnerClass = props?.spinnerClass ?? "spinner-border",
+    spinnerColor = props?.spinnerColor ?? "text-light",
+    message = props?.message ?? "Loading...";
   return (
     <ErrorBoundary
       FallbackComponent={() => (
