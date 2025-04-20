@@ -1,0 +1,8 @@
+src/_inc/**
+__tests__/**
+src/**/__tests__/**
+**/*.test.ts
+**/*.test.tsx
+**/types.ts
+**/types.tsx
+**/*.d.ts

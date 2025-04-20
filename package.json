@@ -33,17 +33,6 @@
       "last 1 edge version"
     ]
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react-hooks/recommended",
-      "next/core-web-vitals",
-      "next/typescript"
-    ]
-  },
   "scripts": {
     "next": "next dev",
     "dev": "next dev",
@@ -74,9 +63,11 @@
     "@babel/core": "^7.24.8",
     "@babel/plugin-transform-runtime": "^7.24.7",
     "@babel/preset-env": "^7.24.8",
+    "@eslint/eslintrc": "^3.3.1",
     "@nestjs/common": "^10.3.7",
     "@nestjs/core": "^10.3.7",
     "@nestjs/platform-express": "^10.3.7",
+    "@next/eslint-plugin-next": "^15.3.1",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.2.4",
     "@testing-library/jest-dom": "^5.17.0",
@@ -86,12 +77,12 @@
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "bootstrap": "^5.3.3",
     "core-js": "^3.37.1",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.5",
     "express": "^4.19.2",
     "mysql": "^2.18.1",

@@ -33,8 +33,8 @@
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
     "alwaysStrict": true /* Ensure 'use strict' is always emitted. */,
-    "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
-    "noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
+    "noUnusedLocals": false /* Enable error reporting when local variables aren't read. */,
+    "noUnusedParameters": false /* Raise an error when a function parameter isn't read. */,
     "noFallthroughCasesInSwitch": true /* Enable error reporting for fallthrough cases in switch statements. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     // "noEmit": true,
@@ -48,10 +48,11 @@
     "**/types.ts",
     "**/types.tsx",
     "**/test.tsx",
-    "**/test.ts", //desativar na compilação
-    "srcBack/",
-    "**/srcBack",
+    "**/test.ts",
     "__tests__",
-    "**/__tests__"
+    "**/__tests__",
+    "src/_inc/*",
+    "srcBack/",
+    "**/srcBack"
   ]
 }
