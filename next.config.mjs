@@ -18,6 +18,5 @@ const nextConfig = {
       hostname: "localhost",
     },
   ],
-  target: "serverless",
 };
 export default nextConfig;
