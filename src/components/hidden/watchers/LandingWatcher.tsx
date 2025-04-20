@@ -1,6 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { nullishEl } from "src/lib/declarations/types";
+// @ts-ignore
+import s from "../../../styles/modules/landing-page.module.scss";
 export default function LandingWatcher(): JSX.Element {
   useEffect(() => {
     const b = document.body,
@@ -146,6 +148,29 @@ export default function LandingWatcher(): JSX.Element {
       b.removeAttribute(`data-${mq}`);
     }, 1000);
     b.setAttribute(`data-${mq}`, "true");
+  }, []);
+  useEffect(() => {
+    const b = document.body,
+      chkImg = "checking-image";
+    if (b.getAttribute(`data-${chkImg}`) === "true") return;
+    setTimeout(() => {
+      const abg = document.getElementById("anhangaBg");
+      if (!abg) return;
+      if (abg.dataset.errored !== "true") return;
+      const img = document.createElement("img");
+      for (const attr of [
+        ["id", "anhangaBg"],
+        ["loading", "eager"],
+        ["decoding", "async"],
+        ["alt", "Deus Anhanga"],
+        ["src", "/img/dall-e-anhanga.jpeg"],
+        ["class", s.anhangaBg],
+        ["data-fallback", "true"],
+      ])
+        img.setAttribute(attr[0], attr[1]);
+      document.replaceChild(abg, img);
+    }, 200);
+    b.setAttribute(`data-${chkImg}`, "true");
   }, []);
   return <span className={`watcher`} style={{ display: "none" }}></span>;
 }

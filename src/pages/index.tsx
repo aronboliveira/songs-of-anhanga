@@ -1,4 +1,3 @@
-"use client";
 import { Provider } from "react-redux";
 import { landingStore } from "src/redux/landingStore";
 import Image from "next/image";
@@ -15,9 +14,13 @@ export default function LandingPage(): JSX.Element {
           decoding="async"
           fill
           alt="Deus Anhanga"
-          src="/img/dall-e-anhanga.jpeg"
+          src={`/img/dall-e-anhanga.jpeg`}
           className={s.anhangaBg}
           priority
+          onError={ev => {
+            if (!ev.currentTarget) return;
+            ev.currentTarget.dataset.errored = "true";
+          }}
         />
         <figcaption className={s.anhangaCapt}>
           <blockquote id="mainQuote" className={s.mainQuote}>

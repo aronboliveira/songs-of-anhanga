@@ -4,5 +4,20 @@ const nextConfig = {
   trailingSlash: true,
   distDir: "build",
   output: "standalone",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+  images: {
+    domains: ["songs-of-anhanga.netlify.app", "localhost"],
+  },
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "songs-of-anhanga.netlify.app",
+    },
+    {
+      protocol: "http",
+      hostname: "localhost",
+    },
+  ],
+  target: "serverless",
 };
 export default nextConfig;
