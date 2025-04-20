@@ -10,4 +10,4 @@ status = 200
 [context.production.environment]
 NODE_ENV = "production"
 ESLINT_USE_FLAT_CONFIG=true
-NEXT_PUBLIC_BASE_URL=https://songs-of-anhanga.netlify.app/
+NEXT_PUBLIC_BASE_URL="https://songs-of-anhanga.netlify.app/"
