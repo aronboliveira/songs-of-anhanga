@@ -79,15 +79,17 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: none;
+  scrollbar-gutter: auto;
 }
 
 .anhangaBg {
-  object-fit: contain;
-  padding-block: 2rem;
+  object-fit: cover;
   object-position: center;
-  filter: grayscale(0.4);
   aspect-ratio: 16/9;
+  min-height: 100vh;
+  filter: grayscale(0.4);
   opacity: 0;
   transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out,
     mix-blend-mode 0.17s ease-in-out;

@@ -5,16 +5,26 @@ import { Toaster, toast } from "react-hot-toast";
 import "../styles/gStyle.scss";
 import "../styles/globals.scss";
 import "../styles/index.scss";
+import Head from "next/head";
 interface MyAppProps extends AppProps {
   pageProps: AppProps["pageProps"] & { isLoggedIn: boolean };
 }
 export default function GameApp({ Component, pageProps }: MyAppProps) {
   return (
-    <div id="homeRoot">
-      <Toaster />
-      <HeaderDefault isLoggedIn={pageProps.isLoggedIn} />
-      <Component {...pageProps} />
-    </div>
+    <>
+      <Head>
+        <title>Game App</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=yes, maximum-scale=2.0, minimum-scale=0.5"
+        />
+      </Head>
+      <div id="homeRoot">
+        <Toaster />
+        <HeaderDefault isLoggedIn={pageProps.isLoggedIn} />
+        <Component {...pageProps} />
+      </div>
+    </>
   );
 }
 GameApp.getInitialProps = async (appCtx: AppContext) => {

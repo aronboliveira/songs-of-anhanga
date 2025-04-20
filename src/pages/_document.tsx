@@ -14,11 +14,6 @@ export default function MyDocument() {
   return (
     <Html lang="en-US">
       <Head>
-        <title>Game App</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=yes, maximum-scale=2.0, minimum-scale=0.5"
-        />
         <meta charSet="utf-8" />
         <meta
           name="keywords"
@@ -40,7 +35,6 @@ export default function MyDocument() {
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossOrigin="anonymous"
         />
-        {/* <title>Game App</title> */}
       </Head>
       <body>
         <Main />

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { nullishHeader } from "src/lib/declarations/types";
+import { nlHeader } from "src/lib/declarations/types";
 import {
   htmlElementNotFound,
   typeError,
@@ -42,7 +42,7 @@ export default function HeaderMain({
     AccordionRefsState
   >((s: StoreStateConfiguration) => s.accordionRefs);
   const dispatch = useDispatch<AppThunk>();
-  const headerRef = useRef<nullishHeader>(null);
+  const headerRef = useRef<nlHeader>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
   const renderHeader = (hRoot: Root): void | JSX.Element => {
     const renderAttempt = (hRoot: Root) => {

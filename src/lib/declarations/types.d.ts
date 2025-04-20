@@ -38,7 +38,7 @@ export type HTMLMain = HTMLElement & {
 };
 export type nullishArt = HTMLArticle | null;
 export type nullishFig = HTMLFigure | null;
-export type nullishHeader = HTMLHeader | null;
+export type nlHeader = HTMLHeader | null;
 export type nullishFooter = HTMLFooter | null;
 export type nlDiv = HTMLDivElement | null;
 export type nullishNav = HTMLNav | null;
