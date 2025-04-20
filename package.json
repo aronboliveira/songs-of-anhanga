@@ -1,9 +1,49 @@
 {
-  "name": "login-page-app",
+  "name": "songs-of-anhanga",
   "version": "1.0.0",
-  "description": "",
-  "main": "../login-page/dist/loginBundle.tsx",
+  "description": "RPG app based on brazilian folklore",
+  "main": "src/pages/index.tsx",
   "private": true,
+  "author": "Aron Barbosa de Oliveira",
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "rpg",
+    "mvc",
+    "next",
+    "react",
+    "wordpress",
+    "folklore",
+    "brazil"
+  ],
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "github.com/aronboliveira/songs-of-anhanga"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 edge version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "next/core-web-vitals",
+      "next/typescript"
+    ]
+  },
   "scripts": {
     "next": "next dev",
     "dev": "next dev",
@@ -30,17 +70,6 @@
     "watch-all--cmd--nowp": "npm-run-all -p tsc-all--cmd sassc-all--cmd",
     "watch-all--cmd--gwp": "npm-run-all -p tsc-all--cmd sassc-all--cmd watch-all--wp"
   },
-  "repository": {
-    "type": "git",
-    "url": "github.com/aronboliveira/app-jogo-unnamed"
-  },
-  "keywords": [
-    "gamedev",
-    "rpg",
-    "mvc"
-  ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.24.8",
     "@babel/plugin-transform-runtime": "^7.24.7",
@@ -101,23 +130,5 @@
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }
