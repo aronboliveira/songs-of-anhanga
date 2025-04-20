@@ -1,15 +1,14 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import eslintRecommended from "eslint/conf/eslint-recommended";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
-import nextPlugin from "@next/eslint-plugin-next";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import globals from "globals";
-export default [
+const { FlatCompat } = require("@eslint/eslintrc");
+const path = require("path");
+const eslintRecommended = require("eslint/conf/eslint-recommended");
+const reactPlugin = require("eslint-plugin-react");
+const reactHooksPlugin = require("eslint-plugin-react-hooks");
+const nextPlugin = require("@next/eslint-plugin-next");
+const tsPlugin = require("@typescript-eslint/eslint-plugin");
+const globals = require("globals");
+module.exports = [
   ...new FlatCompat({
-    baseDirectory: dirname(fileURLToPath(import.meta.url)),
+    baseDirectory: path.dirname(__filename),
   }).extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
