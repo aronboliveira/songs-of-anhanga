@@ -111,7 +111,7 @@ export default function CarouselComponent({
       try {
         const bootstrap = require("bootstrap");
         const carouselInstance = new bootstrap.Carousel(carouselRef.current!);
-        console.log(carouselInstance);
+        // console.log(carouselInstance);
       } catch (e) {
         console.error(
           `Error executing routine for classifying bootstrap in Carousel:\n${

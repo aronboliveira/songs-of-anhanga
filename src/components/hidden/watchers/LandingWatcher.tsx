@@ -142,7 +142,7 @@ export default function LandingWatcher(): JSX.Element {
       if (q) {
         q.style.opacity = "0.8";
         const tf = getComputedStyle(q).transform;
-        console.log(tf);
+        // console.log(tf);
         q.style.transform = tf.replace(/\-[0-9]+(?:\.[0-9]+)?.*/g, "0");
       }
       b.removeAttribute(`data-${mq}`);
@@ -154,21 +154,25 @@ export default function LandingWatcher(): JSX.Element {
       chkImg = "checking-image";
     if (b.getAttribute(`data-${chkImg}`) === "true") return;
     setTimeout(() => {
-      const abg = document.getElementById("anhangaBg");
-      if (!abg) return;
-      if (abg.dataset.errored !== "true") return;
-      const img = document.createElement("img");
-      for (const attr of [
-        ["id", "anhangaBg"],
-        ["loading", "eager"],
-        ["decoding", "async"],
-        ["alt", "Deus Anhanga"],
-        ["src", "/img/dall-e-anhanga.jpeg"],
-        ["class", s.anhangaBg],
-        ["data-fallback", "true"],
-      ])
-        img.setAttribute(attr[0], attr[1]);
-      abg.parentElement?.replaceChild(abg, img);
+      try {
+        const abg = document.getElementById("anhangaBg");
+        if (!abg?.parentElement) return;
+        if (abg.dataset.errored !== "true") return;
+        const img = document.createElement("img");
+        for (const attr of [
+          ["id", "anhangaBg"],
+          ["loading", "eager"],
+          ["decoding", "async"],
+          ["alt", "Deus Anhanga"],
+          ["src", `${location.origin}/img/dall-e-anhanga.jpeg`],
+          ["class", s.anhangaBg],
+          ["data-fallback", "true"],
+        ])
+          img.setAttribute(attr[0], attr[1]);
+        abg.parentElement.replaceChild(img, abg);
+      } catch (e) {
+        console.warn(`Failed to replace background image`);
+      }
     }, 200);
     b.setAttribute(`data-${chkImg}`, "true");
   }, []);
