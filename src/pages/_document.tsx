@@ -7,6 +7,7 @@ import Document, {
 } from "next/document";
 import { DocumentProps } from "src/lib/declarations/interfaces";
 import { voidishStr } from "src/lib/declarations/types";
+import { GoogleFonts } from "next-google-fonts";
 
 export const gameName: voidishStr = undefined;
 
@@ -35,6 +36,7 @@ export default function MyDocument() {
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossOrigin="anonymous"
         />
+        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" />
       </Head>
       <body>
         <Main />

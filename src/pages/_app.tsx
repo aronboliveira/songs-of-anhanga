@@ -5,6 +5,7 @@ import { Toaster, toast } from "react-hot-toast";
 import "../styles/gStyle.scss";
 import "../styles/globals.scss";
 import "../styles/index.scss";
+import "../styles/_fonts.scss";
 import Head from "next/head";
 interface MyAppProps extends AppProps {
   pageProps: AppProps["pageProps"] & { isLoggedIn: boolean };
